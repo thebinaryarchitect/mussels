@@ -52,4 +52,20 @@
  */
 - (void)restoreProducts;
 
+/**
+ *  A set of strings representing purchased product identifiers.
+ *
+ *  @return NSSet or nil.
+ */
+- (NSSet *)purchasedProductIdentifiers;
+
+/**
+ *  Tracks if a product has been purchased.
+ *
+ *  @param productID The product identifier.
+ *
+ *  @return YES if purchased.
+ */
+- (BOOL)isProductAvailable:(NSString *)productID;
+
 @end

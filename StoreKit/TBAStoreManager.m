@@ -91,6 +91,14 @@ NSString *const NSUserDefaultsKeyPurchasedProductIdentifiers = @"NSUserDefaultsK
     [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
 }
 
+- (NSSet *)purchasedProductIdentifiers {
+    return [[NSUserDefaults standardUserDefaults] purchasedProductIdentifiers];
+}
+
+- (BOOL)isProductAvailable:(NSString *)productID {
+    return [[self purchasedProductIdentifiers] containsObject:productID];
+}
+
 #pragma mark Private
 
 - (void)completeTransaction:(SKPaymentTransaction *)transaction {
