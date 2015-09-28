@@ -47,4 +47,9 @@
  */
 - (void)purchaseProduct:(SKProduct *)product;
 
+/**
+ *  Attempts to restore any purchased products.
+ */
+- (void)restoreProducts;
+
 @end

@@ -51,6 +51,10 @@
     [[SKPaymentQueue defaultQueue] addPayment:payment];
 }
 
+- (void)restoreProducts {
+    [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
+}
+
 #pragma mark Private
 
 - (void)completeTransaction:(SKPaymentTransaction *)transaction {
