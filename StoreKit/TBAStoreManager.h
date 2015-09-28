@@ -97,4 +97,18 @@
  */
 - (BOOL)isProductAvailable:(NSString *)productID;
 
+/**
+ *  Add an observer. The observer begins to recieve notifications when the protocol methods are called.
+ *
+ *  @param observer An object conforming to the TBAStoreManagerObserver protocol.
+ */
+- (void)addObserver:(id<TBAStoreManagerObserver>)observer;
+
+/**
+ *  Removes an observer. The observer no longer recieves notifications when the protocol methods are called.
+ *
+ *  @param observer The observer.
+ */
+- (void)removeObserver:(id)observer;
+
 @end

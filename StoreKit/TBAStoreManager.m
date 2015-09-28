@@ -49,6 +49,7 @@ NSString *const NSUserDefaultsKeyPurchasedProductIdentifiers = @"NSUserDefaultsK
 @interface TBAStoreManager() <SKPaymentTransactionObserver, SKRequestDelegate, SKProductsRequestDelegate>
 @property (nonatomic, strong, readwrite) NSDictionary *availableProducts;
 @property (nonatomic, strong, readwrite) NSArray *invalidProductIdentifiers;
+@property (nonatomic, strong, readwrite) NSMutableSet *observers;
 @end
 
 @implementation TBAStoreManager
@@ -66,6 +67,7 @@ NSString *const NSUserDefaultsKeyPurchasedProductIdentifiers = @"NSUserDefaultsK
     self = [super init];
     if (self) {
         [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+        self.observers = [NSMutableSet set];
     }
     return self;
 }
@@ -97,6 +99,14 @@ NSString *const NSUserDefaultsKeyPurchasedProductIdentifiers = @"NSUserDefaultsK
 
 - (BOOL)isProductAvailable:(NSString *)productID {
     return [[self purchasedProductIdentifiers] containsObject:productID];
+}
+
+- (void)addObserver:(id<TBAStoreManagerObserver>)observer {
+    [self.observers addObject:observer];
+}
+
+- (void)removeObserver:(id)observer {
+    [self.observers removeObject:observer];
 }
 
 #pragma mark Private
