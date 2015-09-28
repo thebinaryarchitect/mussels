@@ -111,4 +111,13 @@
  */
 - (void)removeObserver:(id)observer;
 
+/**
+ *  Generates the price string for the product including the localization.
+ *
+ *  @param product The product.
+ *
+ *  @return Price string or nil.
+ */
+- (NSString *)priceStringForProduct:(SKProduct *)product;
+
 @end

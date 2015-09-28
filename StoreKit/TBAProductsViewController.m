@@ -104,10 +104,17 @@
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
+        [cell.purchaseButton setTitle:[[TBAStoreManager sharedInstance] priceStringForProduct:product] forState:UIControlStateNormal];
         cell.accessoryView = cell.purchaseButton;
     }
     
     return cell;
+}
+
+#pragma mark UITableViewDelegate
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
 }
 
 @end

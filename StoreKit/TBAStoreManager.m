@@ -50,6 +50,7 @@ NSString *const NSUserDefaultsKeyPurchasedProductIdentifiers = @"NSUserDefaultsK
 @property (nonatomic, strong, readwrite) NSDictionary *availableProducts;
 @property (nonatomic, strong, readwrite) NSArray *invalidProductIdentifiers;
 @property (nonatomic, strong, readwrite) NSMutableSet *observers;
+@property (nonatomic, strong, readwrite) NSNumberFormatter *numberFormatter;
 @end
 
 @implementation TBAStoreManager
@@ -68,6 +69,10 @@ NSString *const NSUserDefaultsKeyPurchasedProductIdentifiers = @"NSUserDefaultsK
     if (self) {
         [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
         self.observers = [NSMutableSet set];
+        
+        self.numberFormatter = [[NSNumberFormatter alloc] init];
+        self.numberFormatter.formatterBehavior = NSNumberFormatterBehavior10_4;
+        self.numberFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
     }
     return self;
 }
@@ -107,6 +112,11 @@ NSString *const NSUserDefaultsKeyPurchasedProductIdentifiers = @"NSUserDefaultsK
 
 - (void)removeObserver:(id)observer {
     [self.observers removeObject:observer];
+}
+
+- (NSString *)priceStringForProduct:(SKProduct *)product {
+    self.numberFormatter.locale = product.priceLocale;
+    return [self.numberFormatter stringFromNumber:product.price];
 }
 
 #pragma mark Private
