@@ -8,6 +8,42 @@
 
 #import "TBAStoreManager.h"
 
+#pragma mark - NSUserDefaults (TBAStoreManagerAdditions)
+
+NSString *const NSUserDefaultsKeyPurchasedProductIdentifiers = @"NSUserDefaultsKeyPurchasedProductIdentifiers";
+
+@interface NSUserDefaults (TBAStoreManagerAdditions)
+
+- (NSSet *)purchasedProductIdentifiers;
+- (void)addProductIdentifier:(NSString *)productID;
+- (void)removeProductIdentifier:(NSString *)productID;
+
+@end
+
+@implementation NSUserDefaults (TBAStoreManagerAdditions)
+
+- (NSSet *)purchasedProductIdentifiers {
+    NSData *data = [self objectForKey:NSUserDefaultsKeyPurchasedProductIdentifiers];
+    if (data) {
+        return [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
+    return nil;
+}
+
+- (void)addProductIdentifier:(NSString *)productID {
+    NSMutableSet *productIDs = [NSMutableSet setWithSet:[self purchasedProductIdentifiers]];
+    [productIDs addObject:productID];
+    [self synchronize];
+}
+
+- (void)removeProductIdentifier:(NSString *)productID {
+    NSMutableSet *productIDs = [NSMutableSet setWithSet:[self purchasedProductIdentifiers]];
+    [productIDs removeObject:productID];
+    [self synchronize];
+}
+
+@end
+
 #pragma mark - TBAStoreManager
 
 @interface TBAStoreManager() <SKPaymentTransactionObserver, SKRequestDelegate, SKProductsRequestDelegate>
