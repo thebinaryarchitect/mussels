@@ -106,6 +106,8 @@ NSString *const NSUserDefaultsKeyPurchasedProductIdentifiers = @"NSUserDefaultsK
         // Handle downloads
     } else {
         [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+        NSString *productID = transaction.payment.productIdentifier;
+        [[NSUserDefaults standardUserDefaults] addProductIdentifier:productID];
     }
 }
 
