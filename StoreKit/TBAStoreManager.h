@@ -23,10 +23,10 @@
  *  Called when the store manager has attempted to fetch products.
  *
  *  @param storeManager      The store manager.
- *  @param products          Array of SKProduct objects
+ *  @param products          Dictionary of SKProduct objects
  *  @param invalidProductIDs Array of NSString objects.
  */
-- (void)storeManager:(TBAStoreManager *)storeManager didFetchProducts:(NSArray *)products invalidProductIdentifiers:(NSArray *)invalidProductIDs;
+- (void)storeManager:(TBAStoreManager *)storeManager didFetchProducts:(NSDictionary *)products invalidProductIdentifiers:(NSArray *)invalidProductIDs;
 
 /**
  *  Called when the store manager has purchased a product.

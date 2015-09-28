@@ -112,11 +112,19 @@ NSString *const NSUserDefaultsKeyPurchasedProductIdentifiers = @"NSUserDefaultsK
 #pragma mark Private
 
 - (void)completeTransaction:(SKPaymentTransaction *)transaction {
+    NSString *productID = transaction.payment.productIdentifier;
+    if (transaction.error.code != SKErrorPaymentCancelled) {
+        for (id<TBAStoreManagerObserver> observer in self.observers) {
+            if ([observer respondsToSelector:@selector(storeManager:didPurchaseProductWithIdentifier:)]) {
+                [observer storeManager:self didPurchaseProductWithIdentifier:productID];
+            }
+        }
+    }
+    
     if (transaction.downloads && transaction.downloads.count > 0) {
         // Handle downloads
     } else {
         [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
-        NSString *productID = transaction.payment.productIdentifier;
         [[NSUserDefaults standardUserDefaults] addProductIdentifier:productID];
     }
 }
@@ -155,6 +163,11 @@ NSString *const NSUserDefaultsKeyPurchasedProductIdentifiers = @"NSUserDefaultsK
     }
     self.availableProducts = [NSDictionary dictionaryWithDictionary:products];
     self.invalidProductIdentifiers = response.invalidProductIdentifiers;
+    for (id<TBAStoreManagerObserver> observer in self.observers) {
+        if ([observer respondsToSelector:@selector(storeManager:didFetchProducts:invalidProductIdentifiers:)]) {
+            [observer storeManager:self didFetchProducts:self.availableProducts invalidProductIdentifiers:self.invalidProductIdentifiers];
+        }
+    }
 }
 
 #pragma mark SKRequestDelegate
