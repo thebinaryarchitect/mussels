@@ -8,13 +8,14 @@
 
 @import StoreKit;
 @import UIKit;
+#import "TBAStoreManager.h"
 
 #pragma mark - TBAProductsViewController
 
 /**
  *  Displays a list of products.
  */
-@interface TBAProductsViewController : UITableViewController
+@interface TBAProductsViewController : UITableViewController <TBAStoreManagerObserver>
 
 /**
  *  The designated initializer.

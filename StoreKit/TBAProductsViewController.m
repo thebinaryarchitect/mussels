@@ -8,7 +8,6 @@
 
 #import "TBAProductsViewController.h"
 #import "TBAProductCell.h"
-#import "TBAStoreManager.h"
 
 #pragma mark - TBAProductsViewController
 
@@ -33,6 +32,16 @@
     [self.tableView registerClass:[TBAProductCell class] forCellReuseIdentifier:NSStringFromClass([TBAProductCell class])];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[TBAStoreManager sharedInstance] addObserver:self];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[TBAStoreManager sharedInstance] removeObserver:self];
+}
+
 #pragma mark Private
 
 - (void)setProductIdentifiers:(NSArray *)productIdentifiers {
@@ -46,6 +55,20 @@
     NSString *productID = self.productIdentifiers[indexPath.row];
     SKProduct *product = [TBAStoreManager sharedInstance].availableProducts[productID];
     return product;
+}
+
+#pragma mark StoreManagerObserver
+
+- (void)storeManager:(TBAStoreManager *)storeManager didFetchProducts:(NSDictionary *)products invalidProductIdentifiers:(NSArray *)invalidProductIDs {
+    [self.tableView reloadData];
+}
+
+- (void)storeManager:(TBAStoreManager *)storeManager didPurchaseProductWithIdentifier:(NSString *)productID {
+    if ([self.productIdentifiers containsObject:productID]) {
+        NSInteger index = [self.productIdentifiers indexOfObject:productID];
+        NSIndexPath *reloadIndexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        [self.tableView reloadRowsAtIndexPaths:@[reloadIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
 
 #pragma mark UITableViewDataSource
