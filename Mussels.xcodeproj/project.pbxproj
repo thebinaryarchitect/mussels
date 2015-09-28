@@ -16,6 +16,7 @@
 		139B38521BB9DA4800384F2E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B384C1BB9DA4800384F2E /* ViewController.m */; };
 		139B38571BB9DAB900384F2E /* TBAStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B38561BB9DAB900384F2E /* TBAStoreManager.m */; };
 		139B385A1BB9EFD500384F2E /* TBAProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B38591BB9EFD500384F2E /* TBAProductCell.m */; };
+		139B385D1BB9F09800384F2E /* TBAProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B385C1BB9F09800384F2E /* TBAProductsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 		139B38561BB9DAB900384F2E /* TBAStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBAStoreManager.m; sourceTree = "<group>"; };
 		139B38581BB9EFD500384F2E /* TBAProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBAProductCell.h; sourceTree = "<group>"; };
 		139B38591BB9EFD500384F2E /* TBAProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBAProductCell.m; sourceTree = "<group>"; };
+		139B385B1BB9F09800384F2E /* TBAProductsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBAProductsViewController.h; sourceTree = "<group>"; };
+		139B385C1BB9F09800384F2E /* TBAProductsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBAProductsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +178,8 @@
 				139B38561BB9DAB900384F2E /* TBAStoreManager.m */,
 				139B38581BB9EFD500384F2E /* TBAProductCell.h */,
 				139B38591BB9EFD500384F2E /* TBAProductCell.m */,
+				139B385B1BB9F09800384F2E /* TBAProductsViewController.h */,
+				139B385C1BB9F09800384F2E /* TBAProductsViewController.m */,
 			);
 			name = "TBA+StoreKit";
 			path = StoreKit;
@@ -280,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				139B385D1BB9F09800384F2E /* TBAProductsViewController.m in Sources */,
 				139B385A1BB9EFD500384F2E /* TBAProductCell.m in Sources */,
 				139B38521BB9DA4800384F2E /* ViewController.m in Sources */,
 				139B38511BB9DA4800384F2E /* AppDelegate.m in Sources */,

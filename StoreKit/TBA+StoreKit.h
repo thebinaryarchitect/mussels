@@ -7,4 +7,5 @@
 //
 
 #import "TBAProductCell.h"
+#import "TBAProductsViewController.h"
 #import "TBAStoreManager.h"
