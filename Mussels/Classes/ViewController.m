@@ -7,6 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "TBA+StoreKit.h"
+
+#pragma mark - ViewController
 
 @interface ViewController ()
 
@@ -14,14 +17,18 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"IAP" ofType:@"plist"];
+    NSArray *identifiers = [NSArray arrayWithContentsOfFile:filePath];
+        
+    [[TBAStoreManager sharedInstance] fetchProductsWithIdentifiers:[NSSet setWithArray:identifiers]];
+    
+    TBAProductsViewController *productsVC = [[TBAProductsViewController alloc] initWithProductIdentifiers:identifiers];
+    self = [super initWithRootViewController:productsVC];
+    if (self) {
+        
+    }
+    return self;
 }
 
 @end

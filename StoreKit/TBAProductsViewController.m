@@ -63,7 +63,7 @@
     [[TBAStoreManager sharedInstance] purchaseProduct:product];
 }
 
-#pragma mark StoreManagerObserver
+#pragma mark TBAStoreManagerObserver
 
 - (void)storeManager:(TBAStoreManager *)storeManager didFetchProducts:(NSDictionary *)products invalidProductIdentifiers:(NSArray *)invalidProductIDs {
     [self.tableView reloadData];

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1391902E1BB9F8650012A3CF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1391902D1BB9F8650012A3CF /* StoreKit.framework */; };
+		139190301BB9F8D40012A3CF /* IAP.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1391902F1BB9F8D40012A3CF /* IAP.plist */; };
 		139B38251BB9D9B400384F2E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B38241BB9D9B400384F2E /* main.m */; };
 		139B382E1BB9D9B400384F2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 139B382C1BB9D9B400384F2E /* Main.storyboard */; };
 		139B38301BB9D9B400384F2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 139B382F1BB9D9B400384F2E /* Images.xcassets */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		1391902D1BB9F8650012A3CF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		1391902F1BB9F8D40012A3CF /* IAP.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = IAP.plist; sourceTree = "<group>"; };
 		139B381F1BB9D9B300384F2E /* Mussels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mussels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		139B38231BB9D9B400384F2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		139B38241BB9D9B400384F2E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 		139B384F1BB9DA4800384F2E /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				1391902F1BB9F8D40012A3CF /* IAP.plist */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				139B382E1BB9D9B400384F2E /* Main.storyboard in Resources */,
+				139190301BB9F8D40012A3CF /* IAP.plist in Resources */,
 				139B38331BB9D9B400384F2E /* LaunchScreen.xib in Resources */,
 				139B38301BB9D9B400384F2E /* Images.xcassets in Resources */,
 			);
