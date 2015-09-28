@@ -14,6 +14,7 @@
 		139B383F1BB9D9B400384F2E /* MusselsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B383E1BB9D9B400384F2E /* MusselsTests.m */; };
 		139B38511BB9DA4800384F2E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B384A1BB9DA4800384F2E /* AppDelegate.m */; };
 		139B38521BB9DA4800384F2E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B384C1BB9DA4800384F2E /* ViewController.m */; };
+		139B38571BB9DAB900384F2E /* TBAStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B38561BB9DAB900384F2E /* TBAStoreManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,9 @@
 		139B384A1BB9DA4800384F2E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		139B384B1BB9DA4800384F2E /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		139B384C1BB9DA4800384F2E /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		139B38541BB9DA9B00384F2E /* TBA+StoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBA+StoreKit.h"; sourceTree = "<group>"; };
+		139B38551BB9DAB900384F2E /* TBAStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBAStoreManager.h; sourceTree = "<group>"; };
+		139B38561BB9DAB900384F2E /* TBAStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBAStoreManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,9 @@
 		139B38531BB9DA4F00384F2E /* TBA+StoreKit */ = {
 			isa = PBXGroup;
 			children = (
+				139B38541BB9DA9B00384F2E /* TBA+StoreKit.h */,
+				139B38551BB9DAB900384F2E /* TBAStoreManager.h */,
+				139B38561BB9DAB900384F2E /* TBAStoreManager.m */,
 			);
 			name = "TBA+StoreKit";
 			path = StoreKit;
@@ -271,6 +278,7 @@
 				139B38521BB9DA4800384F2E /* ViewController.m in Sources */,
 				139B38511BB9DA4800384F2E /* AppDelegate.m in Sources */,
 				139B38251BB9D9B400384F2E /* main.m in Sources */,
+				139B38571BB9DAB900384F2E /* TBAStoreManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
