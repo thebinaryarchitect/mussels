@@ -57,6 +57,12 @@
     return product;
 }
 
+- (void)purchaseProduct:(UIButton *)button {
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:button.tag inSection:0];
+    SKProduct *product = [self productAtIndexPath:indexPath];
+    [[TBAStoreManager sharedInstance] purchaseProduct:product];
+}
+
 #pragma mark StoreManagerObserver
 
 - (void)storeManager:(TBAStoreManager *)storeManager didFetchProducts:(NSDictionary *)products invalidProductIdentifiers:(NSArray *)invalidProductIDs {
@@ -84,10 +90,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TBAProductCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([TBAProductCell class]) forIndexPath:indexPath];
     
+    cell.purchaseButton.tag = indexPath.row;
+    [cell.purchaseButton addTarget:self action:@selector(purchaseProduct:) forControlEvents:UIControlEventValueChanged];
+    
     SKProduct *product = [self productAtIndexPath:indexPath];
     if (product) {
         cell.textLabel.text = product.localizedTitle;
         cell.detailTextLabel.text = product.localizedDescription;
+    }
+    
+    if ([[TBAStoreManager sharedInstance] isProductAvailable:product.productIdentifier]) {
+        cell.accessoryView = nil;
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.accessoryView = cell.purchaseButton;
     }
     
     return cell;
