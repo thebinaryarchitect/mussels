@@ -8,6 +8,35 @@
 
 @import Foundation;
 @import StoreKit;
+@class TBAStoreManager;
+
+#pragma mark - TBAStoreManagerObserver
+
+/**
+ *  Store manager protocol.
+ */
+@protocol TBAStoreManagerObserver <NSObject>
+
+@optional
+
+/**
+ *  Called when the store manager has attempted to fetch products.
+ *
+ *  @param storeManager      The store manager.
+ *  @param products          Array of SKProduct objects
+ *  @param invalidProductIDs Array of NSString objects.
+ */
+- (void)storeManager:(TBAStoreManager *)storeManager didFetchProducts:(NSArray *)products invalidProductIdentifiers:(NSArray *)invalidProductIDs;
+
+/**
+ *  Called when the store manager has purchased a product.
+ *
+ *  @param storeManager The store manager.
+ *  @param productID    The product's identifier.
+ */
+- (void)storeManager:(TBAStoreManager *)storeManager didPurchaseProductWithIdentifier:(NSString *)productID;
+
+@end
 
 #pragma mark - TBAStoreManager
 
