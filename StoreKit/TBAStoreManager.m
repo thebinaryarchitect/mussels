@@ -10,7 +10,7 @@
 
 #pragma mark - TBAStoreManager
 
-@interface TBAStoreManager() <SKRequestDelegate, SKProductsRequestDelegate>
+@interface TBAStoreManager() <SKPaymentTransactionObserver, SKRequestDelegate, SKProductsRequestDelegate>
 @property (nonatomic, strong, readwrite) NSDictionary *availableProducts;
 @property (nonatomic, strong, readwrite) NSArray *invalidProductIdentifiers;
 @end
@@ -26,12 +26,64 @@
     return _storeManager;
 }
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+}
+
 #pragma mark Public
 
 - (void)fetchProductsWithIdentifiers:(NSSet *)productIDs {
     SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:productIDs];
     request.delegate = self;
     [request start];
+}
+
+- (void)purchaseProduct:(SKProduct *)product {
+    SKMutablePayment *payment = [SKMutablePayment paymentWithProduct:product];
+    [[SKPaymentQueue defaultQueue] addPayment:payment];
+}
+
+#pragma mark Private
+
+- (void)completeTransaction:(SKPaymentTransaction *)transaction {
+    if (transaction.downloads && transaction.downloads.count > 0) {
+        // Handle downloads
+    } else {
+        [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+    }
+}
+
+#pragma mark SKPaymentTransactionObserver
+
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions {
+    for (SKPaymentTransaction *transaction in transactions) {
+        switch (transaction.transactionState) {
+            case SKPaymentTransactionStatePurchasing: {
+                // Do nothing.
+                break;
+            }
+                case SKPaymentTransactionStateDeferred:
+                case SKPaymentTransactionStatePurchased:
+            case SKPaymentTransactionStateRestored: {
+                [self completeTransaction:transaction];
+                break;
+            }
+            case SKPaymentTransactionStateFailed: {
+                // Handle failure.
+                break;
+            }
+            default:
+                break;
+        }
+    }
 }
 
 #pragma mark SKProductsRequestDelegate

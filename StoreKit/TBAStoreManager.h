@@ -40,4 +40,11 @@
  */
 - (void)fetchProductsWithIdentifiers:(NSSet *)productIDs;
 
+/**
+ *  Attempts to purchase the product.
+ *
+ *  @param productID The product.
+ */
+- (void)purchaseProduct:(SKProduct *)product;
+
 @end
