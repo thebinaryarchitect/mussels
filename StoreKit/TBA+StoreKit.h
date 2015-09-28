@@ -6,4 +6,5 @@
 //  See LICENSE.txt for more information.
 //
 
+#import "TBAProductCell.h"
 #import "TBAStoreManager.h"

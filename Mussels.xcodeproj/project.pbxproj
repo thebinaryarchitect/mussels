@@ -15,6 +15,7 @@
 		139B38511BB9DA4800384F2E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B384A1BB9DA4800384F2E /* AppDelegate.m */; };
 		139B38521BB9DA4800384F2E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B384C1BB9DA4800384F2E /* ViewController.m */; };
 		139B38571BB9DAB900384F2E /* TBAStoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B38561BB9DAB900384F2E /* TBAStoreManager.m */; };
+		139B385A1BB9EFD500384F2E /* TBAProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B38591BB9EFD500384F2E /* TBAProductCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,8 @@
 		139B38541BB9DA9B00384F2E /* TBA+StoreKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TBA+StoreKit.h"; sourceTree = "<group>"; };
 		139B38551BB9DAB900384F2E /* TBAStoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBAStoreManager.h; sourceTree = "<group>"; };
 		139B38561BB9DAB900384F2E /* TBAStoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBAStoreManager.m; sourceTree = "<group>"; };
+		139B38581BB9EFD500384F2E /* TBAProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBAProductCell.h; sourceTree = "<group>"; };
+		139B38591BB9EFD500384F2E /* TBAProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBAProductCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +173,8 @@
 				139B38541BB9DA9B00384F2E /* TBA+StoreKit.h */,
 				139B38551BB9DAB900384F2E /* TBAStoreManager.h */,
 				139B38561BB9DAB900384F2E /* TBAStoreManager.m */,
+				139B38581BB9EFD500384F2E /* TBAProductCell.h */,
+				139B38591BB9EFD500384F2E /* TBAProductCell.m */,
 			);
 			name = "TBA+StoreKit";
 			path = StoreKit;
@@ -275,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				139B385A1BB9EFD500384F2E /* TBAProductCell.m in Sources */,
 				139B38521BB9DA4800384F2E /* ViewController.m in Sources */,
 				139B38511BB9DA4800384F2E /* AppDelegate.m in Sources */,
 				139B38251BB9D9B400384F2E /* main.m in Sources */,
