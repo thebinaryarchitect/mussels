@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1391902E1BB9F8650012A3CF /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1391902D1BB9F8650012A3CF /* StoreKit.framework */; };
 		139B38251BB9D9B400384F2E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 139B38241BB9D9B400384F2E /* main.m */; };
 		139B382E1BB9D9B400384F2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 139B382C1BB9D9B400384F2E /* Main.storyboard */; };
 		139B38301BB9D9B400384F2E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 139B382F1BB9D9B400384F2E /* Images.xcassets */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1391902D1BB9F8650012A3CF /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		139B381F1BB9D9B300384F2E /* Mussels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mussels.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		139B38231BB9D9B400384F2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		139B38241BB9D9B400384F2E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1391902E1BB9F8650012A3CF /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +76,7 @@
 		139B38161BB9D9B300384F2E = {
 			isa = PBXGroup;
 			children = (
+				1391902D1BB9F8650012A3CF /* StoreKit.framework */,
 				139B38531BB9DA4F00384F2E /* TBA+StoreKit */,
 				139B38211BB9D9B300384F2E /* Mussels */,
 				139B383B1BB9D9B400384F2E /* MusselsTests */,
@@ -234,6 +238,12 @@
 				TargetAttributes = {
 					139B381E1BB9D9B300384F2E = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 98857CSCYP;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					139B38371BB9D9B400384F2E = {
 						CreatedOnToolsVersion = 6.4;
@@ -418,9 +428,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Mussels/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -428,9 +441,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Mussels/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -487,6 +503,7 @@
 				139B38441BB9D9B400384F2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		139B38451BB9D9B400384F2E /* Build configuration list for PBXNativeTarget "MusselsTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +512,7 @@
 				139B38471BB9D9B400384F2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
