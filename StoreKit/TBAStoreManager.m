@@ -14,6 +14,7 @@
 
 - (NSString *)IAPKey;
 - (NSSet *)purchasedProductIdentifiers;
+- (void)setPurchasedProductIdentifiers:(NSSet *)identifiers;
 - (void)addProductIdentifier:(NSString *)productID;
 - (void)removeProductIdentifier:(NSString *)productID;
 
@@ -34,16 +35,22 @@
     return nil;
 }
 
+- (void)setPurchasedProductIdentifiers:(NSSet *)identifiers {
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:identifiers];
+    [self setObject:data forKey:[self IAPKey]];
+    [self synchronize];
+}
+
 - (void)addProductIdentifier:(NSString *)productID {
     NSMutableSet *productIDs = [NSMutableSet setWithSet:[self purchasedProductIdentifiers]];
     [productIDs addObject:productID];
-    [self synchronize];
+    [self setPurchasedProductIdentifiers:productIDs];
 }
 
 - (void)removeProductIdentifier:(NSString *)productID {
     NSMutableSet *productIDs = [NSMutableSet setWithSet:[self purchasedProductIdentifiers]];
     [productIDs removeObject:productID];
-    [self synchronize];
+    [self setPurchasedProductIdentifiers:productIDs];
 }
 
 @end
