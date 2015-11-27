@@ -10,10 +10,9 @@
 
 #pragma mark - NSUserDefaults (TBAStoreManagerAdditions)
 
-NSString *const NSUserDefaultsKeyPurchasedProductIdentifiers = @"NSUserDefaultsKeyPurchasedProductIdentifiers";
-
 @interface NSUserDefaults (TBAStoreManagerAdditions)
 
+- (NSString *)IAPKey;
 - (NSSet *)purchasedProductIdentifiers;
 - (void)addProductIdentifier:(NSString *)productID;
 - (void)removeProductIdentifier:(NSString *)productID;
@@ -22,8 +21,13 @@ NSString *const NSUserDefaultsKeyPurchasedProductIdentifiers = @"NSUserDefaultsK
 
 @implementation NSUserDefaults (TBAStoreManagerAdditions)
 
+- (NSString *)IAPKey {
+    NSString *bundleID = [NSBundle mainBundle].bundleIdentifier;
+    return [bundleID stringByAppendingPathComponent:@"iaps"];
+}
+
 - (NSSet *)purchasedProductIdentifiers {
-    NSData *data = [self objectForKey:NSUserDefaultsKeyPurchasedProductIdentifiers];
+    NSData *data = [self objectForKey:[self IAPKey]];
     if (data) {
         return [NSKeyedUnarchiver unarchiveObjectWithData:data];
     }
