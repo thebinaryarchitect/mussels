@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name		= 'TBA-StoreKitAdditions'
+  s.name		= 'TBA+StoreKitAdditions'
   s.version		= '1.0.0'
   s.summary		= 'StoreKit additions'
   s.homepage		= 'http://www.thebinaryarchitect.com'
